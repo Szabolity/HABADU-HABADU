@@ -58,8 +58,8 @@
             const analyser = audioContext.createAnalyser();
             const microphone = audioContext.createMediaStreamSource(stream);
 
+            // Connect the microphone to the analyser without connecting to the destination
             microphone.connect(analyser);
-            analyser.connect(audioContext.destination);
 
             analyser.fftSize = 256;
             const bufferLength = analyser.frequencyBinCount;
@@ -110,6 +110,7 @@
             console.error('Error accessing microphone:', error);
         });
 </script>
+
 
 </body>
 </html>
