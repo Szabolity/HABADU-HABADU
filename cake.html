@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <div class="message">Happy Birthday Tita Bong!</div>
+    <div class="message">Hipan mu mic muuu hihi</div>
     <div class="cake">
         <div class="plate"></div>
         <div class="layer layer-bottom"></div>
@@ -50,7 +50,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
     const flame = document.getElementById('flame');
-    const message = document.querySelector('.message'); // Select the message element
+    const message = document.querySelector('.message');
 
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then((stream) => {
@@ -58,7 +58,6 @@
             const analyser = audioContext.createAnalyser();
             const microphone = audioContext.createMediaStreamSource(stream);
 
-            // Connect the microphone to the analyser without connecting to the destination
             microphone.connect(analyser);
 
             analyser.fftSize = 256;
