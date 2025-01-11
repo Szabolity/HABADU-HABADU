@@ -46,68 +46,75 @@
             <div id="flame"></div>
         </div>
     </div>
+    <audio id="birthdaySong" src="https://www.youtube.com/watch?v=8QF9hM1MQwc&ab_channel=HappyBirthdaySongwithNames"></audio>
+    
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-    const flame = document.getElementById('flame');
-    const message = document.querySelector('.message');
+   const flame = document.getElementById('flame');
+const message = document.querySelector('.message');
+const birthdaySong = document.getElementById('birthdaySong');
 
-    navigator.mediaDevices.getUserMedia({ audio: true })
-        .then((stream) => {
-            const audioContext = new AudioContext();
-            const analyser = audioContext.createAnalyser();
-            const microphone = audioContext.createMediaStreamSource(stream);
+navigator.mediaDevices.getUserMedia({ audio: true })
+    .then((stream) => {
+        const audioContext = new AudioContext();
+        const analyser = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
 
-            microphone.connect(analyser);
+        microphone.connect(analyser);
 
-            analyser.fftSize = 256;
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
 
-            function detectBlow() {
-                analyser.getByteFrequencyData(dataArray);
-                const average = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
-                const threshold = 50;
+        function detectBlow() {
+            analyser.getByteFrequencyData(dataArray);
+            const average = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
+            const threshold = 50;
 
-                if (average > threshold) {
-                    flame.style.opacity = 0;
-                    message.textContent = "HABADU HABADU";
+            if (average > threshold) {
+                flame.style.opacity = 0;
+                message.textContent = "HABADU HABADU";
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                // Play the birthday song
+                birthdaySong.play();
+
+                const duration = 2 * 1000;
+                const end = Date.now() + duration;
+
+                (function frame() {
                     confetti({
-                        particleCount: 100,
-                        spread: 70,
-                        origin: { y: 0.6 }
+                        particleCount: 5,
+                        angle: 60,
+                        spread: 55,
+                        origin: { x: 0 }
                     });
-                    const duration = 2 * 1000;
-                    const end = Date.now() + duration;
+                    confetti({
+                        particleCount: 5,
+                        angle: 120,
+                        spread: 55,
+                        origin: { x: 1 }
+                    });
 
-                    (function frame() {
-                        confetti({
-                            particleCount: 5,
-                            angle: 60,
-                            spread: 55,
-                            origin: { x: 0 }
-                        });
-                        confetti({
-                            particleCount: 5,
-                            angle: 120,
-                            spread: 55,
-                            origin: { x: 1 }
-                        });
-
-                        if (Date.now() < end) {
-                            requestAnimationFrame(frame);
-                        }
-                    })();
-                }
-
-                requestAnimationFrame(detectBlow);
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                })();
             }
 
-            detectBlow();
-        })
-        .catch((error) => {
-            console.error('Error accessing microphone:', error);
-        });
+            requestAnimationFrame(detectBlow);
+        }
+
+        detectBlow();
+    })
+    .catch((error) => {
+        console.error('Error accessing microphone:', error);
+    });
 </script>
 
 
