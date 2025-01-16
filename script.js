@@ -27,7 +27,6 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                   confetti({
                     particleCount: 300,
                     spread: 90,
-                    gravity: 2, 
                     origin: { x: 0.5, y: 0.6 }, 
                 });
 
@@ -39,7 +38,6 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                     confetti({
                         particleCount: 30,
                         spread: 80,
-                        gravity: 2,
                         origin: { x: 0.5, y: 0.6 },
                     });
                     if (Date.now() < end) {
