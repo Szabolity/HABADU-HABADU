@@ -77,7 +77,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 message.textContent = "HABADU HABADU ATE KUU! 🎉";
 
                 confetti({
-                    particleCount: 100, 
+                    particleCount: 100,
                     spread: 70,
                     gravity: 3, 
                     origin: { x: 0.5, y: 0.6 },
@@ -85,17 +85,11 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
                 birthdaySong.play();
 
-                const duration = 3 * 1000;
+                const duration = 1 * 1000;
                 const end = Date.now() + duration;
 
                 (function frame() {
                     if (Date.now() < end) {
-                        confetti({
-                            particleCount: 15,
-                            spread: 60,
-                            gravity: 3,
-                            origin: { x: 0.5, y: 0.6 },
-                        });
                         requestAnimationFrame(frame);
                     }
                 })();
