@@ -1,16 +1,7 @@
 body {
     background-color: #333;
   }
-
-#fireworksCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 10;
-}
+  
   .cake {
     position: absolute;
     width: 250px;
@@ -99,7 +90,7 @@ body {
     border-bottom-right-radius: 40px;
   }
   .candle {
-    background-color: #ccdf1e;
+    background-color: #df1e1e;
     width: 16px;
     height: 50px;
     border-radius: 8px / 4px;
@@ -116,7 +107,7 @@ body {
     width: 16px;
     height: 8px;
     border-radius: 50%;
-    background-color: #ada203;
+    background-color: #ad0303;
   }
   #flame {
     position: absolute;
@@ -153,5 +144,3 @@ body {
       transform: skewX(5deg);
       box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
     }
-    
-  }
