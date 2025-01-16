@@ -76,13 +76,6 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 flame.style.opacity = 0;
                 message.textContent = "HABADU HABADU ATE KUU! 🎉";
 
-                confetti({
-                    particleCount: 100,
-                    spread: 70,
-                    gravity: 3, 
-                    origin: { x: 0.5, y: 0.6 },
-                });
-
                 birthdaySong.play();
 
                 const duration = 1 * 1000;
