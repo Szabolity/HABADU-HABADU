@@ -77,22 +77,20 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 message.textContent = "Happy Birthday! 🎉";
 
                 confetti({
-                    particleCount: 300, 
+                    particleCount: 100, 
                     spread: 90,
-                    gravity: 3, 
                     origin: { x: 0.5, y: 0.6 },
                 });
 
                 birthdaySong.play();
 
-                const duration = 3 * 1000;
+                const duration = 2 * 1000;
                 const end = Date.now() + duration;
 
                 (function frame() {
                     confetti({
-                        particleCount: 30,
-                        spread: 80,
-                        gravity: 3,
+                        particleCount: 10,
+                        spread: 80
                         origin: { x: 0.5, y: 0.6 },
                     });
                     createFireworks(window.innerWidth / 2, window.innerHeight / 3);
