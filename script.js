@@ -25,10 +25,11 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 message.textContent = "HABADU HABADU ATE KU! 🎉";
                 
                   confetti({
-                        particleCount: 10,
-                        spread: 60,
-                        origin: { x: 0.5, y: 0.6 }
-                    });
+                    particleCount: 100,
+                    spread: 70,
+                    gravity: 3, 
+                    origin: { x: 0.5, y: 0.6 }, 
+                });
 
                 birthdaySong.play();
 
