@@ -27,15 +27,21 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                   confetti({
                     particleCount: 100,
                     spread: 70,
-                    gravity: 3, 
+                    gravity: 2, 
                     origin: { x: 0.5, y: 0.6 }, 
                 });
 
                 birthdaySong.play();
 
-                const duration = 1 * 1000;
+                const duration = 2 * 1000;
                 const end = Date.now() + duration;
                 (function frame() {
+                    confetti({
+                        particleCount: 10,
+                        spread: 60,
+                        gravity: 2,
+                        origin: { x: 0.5, y: 0.6 },
+                    });
                     if (Date.now() < end) {
                         requestAnimationFrame(frame);
                     }
