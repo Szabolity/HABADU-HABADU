@@ -24,10 +24,10 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 flame.style.opacity = 0;
                 message.textContent = "HABADU HABADU ATE KU! 🎉";
                 
-                confetti({
-                    particleCount: 50,
+               confetti({
+                    particleCount: 100,
                     spread: 70,
-                    origin: { y: 0.6 }
+                    origin: { x: 0.5, y: 0.6 }
                 });
 
                 birthdaySong.play();
@@ -35,6 +35,11 @@ navigator.mediaDevices.getUserMedia({ audio: true })
                 const duration = 1 * 1000;
                 const end = Date.now() + duration;
                 (function frame() {
+                    confetti({
+                        particleCount: 10,
+                        spread: 60,
+                        origin: { x: 0.5, y: 0.6 }
+                    });
                     if (Date.now() < end) {
                         requestAnimationFrame(frame);
                     }
