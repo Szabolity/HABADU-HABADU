@@ -23,7 +23,7 @@ class Firework {
     update() {
         this.x += Math.cos(this.angle) * this.speed;
         this.y += Math.sin(this.angle) * this.speed;
-        this.alpha -= 0.02;
+        this.alpha -= 0.01; 
     }
 
     draw() {
@@ -74,29 +74,40 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
             if (average > threshold) {
                 flame.style.opacity = 0;
-                message.textContent = "Happy Birthday! 🎉";
+                message.textContent = "HABADU HABADU ATE KUU! 🎉";
 
                 confetti({
                     particleCount: 100, 
-                    spread: 90,
+                    spread: 70,
+                    gravity: 3, 
                     origin: { x: 0.5, y: 0.6 },
                 });
 
                 birthdaySong.play();
 
-                const duration = 2 * 1000;
+                const duration = 3 * 1000;
                 const end = Date.now() + duration;
 
                 (function frame() {
-                    confetti({
-                        particleCount: 10,
-                        spread: 80
-                        origin: { x: 0.5, y: 0.6 },
-                    });
+                    if (Date.now() < end) {
+                        confetti({
+                            particleCount: 15,
+                            spread: 60,
+                            gravity: 3,
+                            origin: { x: 0.5, y: 0.6 },
+                        });
+                        requestAnimationFrame(frame);
+                    }
+                })();
+
+                const fireworksDuration = 5 * 1000;  
+                const fireworksEnd = Date.now() + fireworksDuration;
+
+                (function fireworksFrame() {
                     createFireworks(window.innerWidth / 2, window.innerHeight / 3);
 
-                    if (Date.now() < end) {
-                        requestAnimationFrame(frame);
+                    if (Date.now() < fireworksEnd) {
+                        requestAnimationFrame(fireworksFrame);
                     }
                 })();
             }
